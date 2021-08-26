@@ -21,7 +21,7 @@ class Burgerbuilder extends Component {
     }
     addingredienthandler=(type)=>{
         const oldcount = 
-        this.state.ingridients[type];console.log(this.state.ingridients)
+        this.state.ingridients[type];
         const updatedcount = oldcount +1;
         const updatedingredients = {
             ...this.state.ingridients
