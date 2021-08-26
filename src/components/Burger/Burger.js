@@ -3,23 +3,22 @@ import React, { Component } from 'react';
 import Classes from './Burger.module.css'
 import Burgeringridients from './Burgeringridients/Burgeringridients';
 
-const Burger =(props)=>{   
-let transformingridients=Object.keys(props.ingridient).map(igkey=>{console.log(igkey)
-    return [...Array(props.ingridient[igkey])].map((_ , i)=>{console.log(i)
-        return <Burgeringridients key={igkey+i} type = {igkey}/>}
-                )
-            }
-       ).reduce((arr,el)=>{
+const Burger = ( props ) => {
+    let transformedIngredients = Object.keys( props.ingridient )
+        .map( igKey => {
+            return [...Array( props.ingridient[igKey] )].map( ( _, i ) => {
+                return <Burgeringridients key={igKey + i} type={igKey} />;
+            } );
+        } )
+        .reduce((arr, el) => {
             return arr.concat(el)
-       },[])
-    
-    ;
-    if (transformingridients.length==0)transformingridients="enter more"
+        }, []);
+    if (transformedIngredients.length==0)transformedIngredients="enter more"
 
     return(
         <div className={Classes.Burger}>
             <Burgeringridients type="bread-top"/>
-            {transformingridients}
+            {transformedIngredients}
             <Burgeringridients type="bread-bottom"/>
         </div>
     )
