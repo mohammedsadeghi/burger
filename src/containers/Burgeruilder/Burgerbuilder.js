@@ -19,7 +19,8 @@ class Burgerbuilder extends Component {
             meat:0
         },
         price:4,
-        purchasable  : false
+        purchasable  : false,
+        purchasing : false
     }
     updatepurchase(ingredients){
         const sum = Object.keys(ingredients).map(igkey=>{
@@ -72,6 +73,9 @@ class Burgerbuilder extends Component {
         })
         this.updatepurchase(updatedingredients);
     }
+    purchasehandler=()=>{
+        this.setState({purchasing:true})
+    }
 
     render(){
         const disabledinfo = {
@@ -83,14 +87,15 @@ class Burgerbuilder extends Component {
         
         return(
             <div>
-                <Modal><Ordersummery ingredients={this.state.ingridients}/>   </Modal>
+                <Modal show={this.state.purchasing}><Ordersummery ingredients={this.state.ingridients}/>   </Modal>
                 <Burger ingridient={this.state.ingridients} />
                 <Buildcontrols
                  removeingredient={this.removeingredienthandler} 
                  ingridientadded={this.addingredienthandler} 
                  disabled={disabledinfo}
                  price={this.state.price}
-                 purchasable={this.state.purchasable}/>
+                 purchasable={this.state.purchasable}
+                 ordered={this.purchasehandler}/>
                 
             </div>
           
