@@ -5,13 +5,16 @@ import Button from '../../UI/Button/Button';
 
 const Ordersummery =(props)=>{
     const osummery = Object.keys(props.ingredients).map(igkey=>{
-        return <li key={igkey}><div style={{textTransform:'capitalize'}} >{igkey}</div> : {props.ingredients[igkey]}       </li>
+        return <li key={igkey}><div style={{textTransform:'capitalize'}}>
+                    {igkey}</div> : {props.ingredients[igkey]}
+                </li>
     })
 
 
     return(
         <Aux>
             <p>YOUR ORDER</p>
+            <p><strong>YOUR TOTAL PRICE : {props.price}</strong></p>
             <ul>
                 {osummery}
             </ul>
