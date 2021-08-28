@@ -1,5 +1,7 @@
 import React from 'react';
 import Aux from '../../../hoc/Aux';
+import Button from '../../UI/Button/Button';
+
 
 const Ordersummery =(props)=>{
     const osummery = Object.keys(props.ingredients).map(igkey=>{
@@ -13,6 +15,8 @@ const Ordersummery =(props)=>{
             <ul>
                 {osummery}
             </ul>
+            <Button btntype="Danger" clicked={props.cancel}>CANCEL</Button>
+            <Button btntype="Success" clicked={props.continue}>PROCEED</Button>
         </Aux>
     )
 }
