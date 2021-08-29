@@ -1,4 +1,4 @@
-import { props } from 'bluebird';
+
 import React from 'react'
 import Aux from '../../hoc/Aux';
 import Toolbar from '../navigation/Toolbar/Toolbar';
