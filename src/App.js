@@ -5,7 +5,7 @@ import Aux from './hoc/Aux'
 
 
 
-class App extends Component {
+class App extends Component {  
   render(){
     return(
       <Aux>

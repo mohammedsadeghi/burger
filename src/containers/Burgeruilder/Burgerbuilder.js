@@ -90,7 +90,7 @@ class Burgerbuilder extends Component {
             disabledinfo[key] = disabledinfo[key]<=0
         }
         
-        return(
+        return( 
             <div>
                 <Modal show={this.state.purchasing}modalclose={this.purchasecancelhandler}>
                     <Ordersummery price={this.state.price} cancel={this.purchasecancelhandler}
