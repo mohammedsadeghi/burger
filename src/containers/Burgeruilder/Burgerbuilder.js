@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import Aux from '../../hoc/Aux';
 import Burger from '../../components/Burger/Burger';
 import Buildcontrols from '../../components/Burger/Buildcontrols/Buildcontrols';
 import Modal from '../../components/UI/Modal/Modal';
 import Ordersummery from '../../components/Burger/ordersummery/Ordersummery';
+import axios from '../../axios-orders'
 const INGREDIENTS_PRICES={
     meat:1,
     cheese:0.5,
@@ -41,7 +41,7 @@ class Burgerbuilder extends Component {
         const updatedingredients = {
             ...this.state.ingridients
         };
-        updatedingredients [type]=updatedcount;
+        updatedingredients[type]=updatedcount;
         
         
         
@@ -62,7 +62,7 @@ class Burgerbuilder extends Component {
         const updatedingredients = {
             ...this.state.ingridients
         };
-        updatedingredients [type]=updatedcount;
+        updatedingredients[type]=updatedcount;
         
         
         
@@ -80,8 +80,17 @@ class Burgerbuilder extends Component {
         this.setState({purchasing:false})
     }
     purchasecontinuehandler =()=>{
-        alert("KEEP CONTINUE")
-    }
+        const order = {
+            ingredients:this.state.ingridients,
+            price:this.state.price,
+            customer:{
+                name:"MOHAMMAD"
+            }
+        }
+        axios.post('/orders.json',order).then(response=>console.log(response))
+        .catch(error=>console.log(error))
+        
+        }
     render(){
         const disabledinfo = {
             ...this.state.ingridients
