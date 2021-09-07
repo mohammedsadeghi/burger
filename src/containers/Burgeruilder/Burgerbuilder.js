@@ -94,7 +94,7 @@ class Burgerbuilder extends Component {
         .then(response=>{this.setState({loading:false,purchasing:false})
         ;console.log(response)})
         .catch(error=>this.setState({loading:false,purchasing:false}))
-        
+        this.props.history.push("/checkout")
         }
     render(){
         const disabledinfo = {
@@ -109,7 +109,7 @@ class Burgerbuilder extends Component {
         if(this.state.loading){
             ordersummery=<Spinner/>;
         }
-        
+        console.log(this.props)
         return( 
             <div>
                 <Modal show={this.state.purchasing}modalclose={this.purchasecancelhandler}>
