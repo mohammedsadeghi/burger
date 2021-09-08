@@ -1,5 +1,4 @@
-import { concat } from 'lodash';
-import React, { Component } from 'react';
+import React from 'react';
 import Classes from './Burger.module.css'
 import Burgeringridients from './Burgeringridients/Burgeringridients';
 
@@ -13,7 +12,7 @@ const Burger = ( props ) => {
         .reduce((arr, el) => {
             return arr.concat(el)
         }, []);
-    if (transformedIngredients.length==0)transformedIngredients="enter more"
+    if (transformedIngredients.length===0)transformedIngredients="enter more"
 
     return(
         <div className={Classes.Burger}>

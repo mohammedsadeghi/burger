@@ -3,7 +3,7 @@ import Burger from '../../components/Burger/Burger';
 import Buildcontrols from '../../components/Burger/Buildcontrols/Buildcontrols';
 import Modal from '../../components/UI/Modal/Modal';
 import Ordersummery from '../../components/Burger/ordersummery/Ordersummery';
-import axios from '../../axios-orders'
+//import axios from '../../axios-orders'
 import Spinner from '../../components/UI/spinner/Spinner';
 const INGREDIENTS_PRICES={
     meat:1,
@@ -82,19 +82,32 @@ class Burgerbuilder extends Component {
         this.setState({purchasing:false})
     }
     purchasecontinuehandler =()=>{
-        this.setState({loading:true})
-        const order = {
-            ingredients:this.state.ingridients,
-            price:this.state.price,
-            customer:{
-                name:"MOHAMMAD"
-            }
+        // this.setState({loading:true})
+        // const order = {
+        //     ingredients:this.state.ingridients,
+        //     price:this.state.price,
+        //     customer:{
+        //         name:"MOHAMMAD"
+        //     }
+        // }
+        // axios.post('/orders.json',order)
+        // .then(response=>{this.setState({loading:false,purchasing:false})
+        // ;console.log(response)})
+        // .catch(error=>this.setState({loading:false,purchasing:false}))
+        const query = [];
+        for(let i in this.state.ingridients){
+            query.push(encodeURIComponent(i) + "=" + encodeURIComponent(this.state.ingridients[i]))
+        console.log(query)
         }
-        axios.post('/orders.json',order)
-        .then(response=>{this.setState({loading:false,purchasing:false})
-        ;console.log(response)})
-        .catch(error=>this.setState({loading:false,purchasing:false}))
-        this.props.history.push("/checkout")
+        const querystring = query.join("&");
+        console.log("string  =>  "+querystring)
+        this.props.history.push({
+            pathname:"/checkout",
+            search:"?"+querystring
+        })
+
+
+
         }
     render(){
         const disabledinfo = {
@@ -109,7 +122,6 @@ class Burgerbuilder extends Component {
         if(this.state.loading){
             ordersummery=<Spinner/>;
         }
-        console.log(this.props)
         return( 
             <div>
                 <Modal show={this.state.purchasing}modalclose={this.purchasecancelhandler}>
