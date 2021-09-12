@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../../../components/UI/Button/Button'
 import 'bootstrap/dist/css/bootstrap.css';
+import Spinner from '../../../components/UI/spinner/Spinner';
 import Classes from './Checkoutdata.module.css';
 import axios from '../../../axios-orders'
 
@@ -26,26 +27,33 @@ class Checkoutdata extends Component{
             }
         }
         axios.post('/orders.json',order)
-        .then(response=>{this.setState({loading:false,purchasing:false})
-        ;console.log(response)})
-        .catch(error=>this.setState({loading:false,purchasing:false}))
+        .then(response=>{this.setState({loading:false})
+        ;this.props.history.push("/")
+        })
+        .catch(error=>this.setState({loading:false}))
        
     }
 
 
 
     render(){
-        return(
-        <div className={Classes.contactdata}style={{ textAlign:"center",justifyContent:"center"}}>
-            <div className={"form-group container"} >
-                <h4>ENTER YOUR CONTACT DATA HERE</h4>
-                <form>
+        let form=(
+            <form>
                     <input className={"form-control"} type="text" name="name" placeholder="YOUR NAME" />
                     <input className={"form-control"} type="email" name="email" placeholder="YOUR email" />
                     <input className={"form-control"} type="text" name="street" placeholder="YOUR street" />
                     <input className={"form-control"} type="text" name="postal" placeholder="YOUR postal code" />
                     <Button clicked={this.orderhandler} className={"btn btn-primary form-control"}>ORDER</Button>
                 </form>
+        );
+        if(this.state.loading){
+            form=<Spinner/>
+        }
+        return(
+        <div className={Classes.contactdata}style={{ textAlign:"center",justifyContent:"center"}}>
+            <div className={"form-group container"} >
+                <h4>ENTER YOUR CONTACT DATA HERE</h4>
+                {form}
             </div>
         </div>
             

@@ -4,6 +4,7 @@ import Burgerbuilder from './containers/Burgeruilder/Burgerbuilder';
 import Aux from './hoc/Aux'
 import Checkout from './containers/Checkout/Checkout';
 import {Route,Switch} from 'react-router-dom'
+import Orders from "./containers/Orders/Orders"
 
 
 
@@ -14,6 +15,8 @@ class App extends Component {
           <Layout>
           <Switch>
             <Route path="/" exact   component={Burgerbuilder} />
+            <Route path="/orders" component={Orders} />
+
             <Route path="/checkout" component={Checkout} />
           </Switch>
 
