@@ -3,7 +3,8 @@ import Button from '../../../components/UI/Button/Button'
 import 'bootstrap/dist/css/bootstrap.css';
 import Spinner from '../../../components/UI/spinner/Spinner';
 import Classes from './Checkoutdata.module.css';
-import axios from '../../../axios-orders'
+import axios from '../../../axios-orders';
+import Input from '../../../components/UI/Input/Input';
 
 
 class Checkoutdata extends Component{
@@ -39,10 +40,10 @@ class Checkoutdata extends Component{
     render(){
         let form=(
             <form>
-                    <input className={"form-control"} type="text" name="name" placeholder="YOUR NAME" />
-                    <input className={"form-control"} type="email" name="email" placeholder="YOUR email" />
-                    <input className={"form-control"} type="text" name="street" placeholder="YOUR street" />
-                    <input className={"form-control"} type="text" name="postal" placeholder="YOUR postal code" />
+                    <Input inputtype="input" type="text" name="name" placeholder="YOUR NAME" />
+                    <Input inputtype="input" type="email" name="email" placeholder="YOUR email" />
+                    <Input inputtype="input" type="text" name="street" placeholder="YOUR street" />
+                    <Input inputtype="input" type="text" name="postal" placeholder="YOUR postal code" />
                     <Button clicked={this.orderhandler} className={"btn btn-primary form-control"}>ORDER</Button>
                 </form>
         );
