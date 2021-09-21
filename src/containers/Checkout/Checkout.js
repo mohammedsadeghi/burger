@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Checkoutsummary from '../../components/Order/Checkoutsummery/Checkoutsummery';
 import {Route} from 'react-router-dom'
 import Checkoutdata from './Checkoutdata/Checkoutdata';
+import 'bootstrap/dist/css/bootstrap.css';
+
 class Checkout extends Component{
     state={
         ingredients:null,
@@ -28,13 +30,17 @@ class Checkout extends Component{
     }
     render(){
         return(
-            <div>
-                <Checkoutsummary 
-                checkoutcancel={this.checkoutcancel} 
-                checkoutproceed={this.checkoutproceed} 
-                ingredients={this.state.ingredients}/>
-                <Route path={this.props.match.url+"/contact-data"} 
-                render={(props)=>(<Checkoutdata ingredients={this.state.ingredients}price={this.state.totslprice} {...props} />)}/>
+            <div className={"container"}>
+                
+                    <p><Checkoutsummary 
+                    checkoutcancel={this.checkoutcancel} 
+                    checkoutproceed={this.checkoutproceed} 
+                    ingredients={this.state.ingredients}/></p>
+                    <br/>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+                    <Route path={this.props.match.url+"/contact-data"} 
+                    render={(props)=>(<Checkoutdata ingredients={this.state.ingredients}price={this.state.totslprice} {...props} />)}/>
+                </div>
             </div>
         )
     }
