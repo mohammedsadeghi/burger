@@ -32,11 +32,11 @@ class Checkout extends Component{
         return(
             <div className={"container"}>
                 
-                    <p><Checkoutsummary 
+                    <Checkoutsummary 
                     checkoutcancel={this.checkoutcancel} 
                     checkoutproceed={this.checkoutproceed} 
-                    ingredients={this.state.ingredients}/></p>
-                    <br/>
+                    ingredients={this.state.ingredients}/>
+                    
                 <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                     <Route path={this.props.match.url+"/contact-data"} 
                     render={(props)=>(<Checkoutdata ingredients={this.state.ingredients}price={this.state.totslprice} {...props} />)}/>
