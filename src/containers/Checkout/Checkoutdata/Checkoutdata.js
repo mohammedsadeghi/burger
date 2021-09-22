@@ -109,13 +109,23 @@ class Checkoutdata extends Component{
         .catch(error=>this.setState({loading:false}))
        
     }
+    changehandle= (event,id)=>{
+        const updatedform={
+            ...this.state.orderForm
+        };
+        const updatedformel={
+            ...updatedform[id]
+        };
+        updatedformel.value=event.target.value;
+        updatedform[id]=updatedformel;
+        this.setState({orderForm:updatedform})
+    }
 
 
 
     render(){
         const arr=[];
         for (let key in this.state.orderForm){
-            console.log(this.state.orderForm[key])
             arr.push({
                 id:key,
                 config:this.state.orderForm[key]
@@ -127,7 +137,8 @@ class Checkoutdata extends Component{
                         <Input key={formel.id}
                         elementType={formel.config.elementType}
                         elementConfig={formel.config.elementConfig}
-                        value={formel.config.value} />
+                        value={formel.config.value}
+                        change={(event)=>this.changehandle(event,formel.id)} />
 
                     ))}
                     <Button clicked={this.orderhandler} className={"btn btn-primary form-control"}>ORDER</Button>
